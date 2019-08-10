@@ -53,6 +53,33 @@ export class SplunkClient {
     })
   }
 
+  createRealTimeSearchJob(query: string, columns: string[]) {
+    return new Promise((resolve, reject) => {
+      query = `search ${ query } | table ${ columns.join(", ") }`
+
+      this.service.search(query, { earliest_time: "rt", latest_time: "rt" }, (err: Error | null, job: any) => {
+        err ? reject(err) : resolve(job)
+      })
+
+    })
+  }
+
+  queryNextResults(job: any, columns: string[]): Promise<{ [key: string]: string }[]> {
+    return new Promise((resolve, reject) => {
+      job.preview({}, (err: Error | null, results: { fields: string[], rows: any[] }) => {
+        if (err) {
+          return reject(err)
+        }
+
+        resolve(this.resultsToResultArray(results, columns))
+      })
+    })
+  }
+
+  cancelJob(job: any) {
+    job.cancel(job)
+  }
+
   private async queryResultsFromJob(job: any, offset: number, count: number): Promise<any> {
     return new Promise((resolve, reject) => {
       job.results({ count, offset }, (err: Error | null, results: any) => {
