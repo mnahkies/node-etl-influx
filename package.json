@@ -1,0 +1,34 @@
+{
+  "name": "etl-influx",
+  "version": "0.0.1",
+  "description": "library to assist with etl of data to influxdb",
+  "main": "./dist/etl-influx.js",
+  "types": "./dist/etl-influx.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnahkies/node-etl-influx"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Nahkies",
+  "license": "MIT",
+  "dependencies": {
+    "influx": "^5.4.0",
+    "splunk-sdk": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.1",
+    "moment": "^2.24.0",
+    "typescript": "^3.5.3"
+  },
+  "peerDependencies": {
+    "moment": "^2.24.0"
+  }
+}
