@@ -30,5 +30,11 @@
   },
   "peerDependencies": {
     "moment": "^2.24.0"
-  }
+  },
+  "keywords": [
+    "influx",
+    "influxdb",
+    "splunk",
+    "etl"
+  ]
 }
