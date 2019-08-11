@@ -1,4 +1,6 @@
 # etl-influx
+[![npm](https://img.shields.io/npm/v/etl-influx.svg)](https://www.npmjs.com/package/etl-influx)
+
 This is a node module that provides some functions to help easily etl data from different data sources into influxdb.
 Currently etl from csv file, and from splunk is supported. Other sources such as elastic search may be added
 in future.
